@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/images/favicon.png" type="image/PNG" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="/styles/book_style.css" />
+
+    <title>Tam's Bookstore</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <%- include("header")%>
+
+    <!-- Hero -->
+    <%- include("hero")%>
+
+    <div>
+      <img
+        src="/images/cherry-blossom-branch.png"
+        alt="break image"
+        height="50"
+      />
+      <p>"So many books, so little time."</p>
+      <p>Frank Zappa</p>
+    </div>
+
+    <!-- Book shelves -->
+    <section class="container">
+      <ul class="row">
+        <% books.forEach(book => { %>
+        <li class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+          <a href="/<%= books.id %>">
+            <div class="my-container" >
+              <div class="book">
+              <div class="front">
+                <div class="cover">
+                  <img
+                    src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-M.jpg"
+                    alt="<%= book.title %>"
+                  />
+                </div>
+              </div>
+              <div class="left-side">
+                <img
+                  src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-M.jpg"
+                  alt="<%= book.title %>"
+                />
+              </div>
+            </div>
+            <p><%= book.title %></p>
+            </div>
+          </a>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <%- include("footer")%>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

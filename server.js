@@ -34,7 +34,7 @@ app.get("/books", async(req,res) => {
 
 
 // GET book by isbn
-app.get("/books/isbn/:isbn", async(req,res) => {
+app.get("/books/:isbn", async(req,res) => {
   try {
     const isbn = req.params.isbn;
     const result = await db.query("SELECT * FROM books WHERE id = $1;", [isbn]);
@@ -85,7 +85,7 @@ app.get("/books/search", async(req,res) => {
 })
 
 // GET review by book id
-app.get("/review/:isbn", async(req,res) => {
+app.get("/reviews/:isbn", async(req,res) => {
   try {
     const isbn = req.params.isbn;
     const result = await db.query("SELECT * FROM reviews WHERE book_id = $1;", [isbn]);
@@ -123,7 +123,7 @@ app.post("/books", async(req,res) => {
 });
 
 // POST a review
-app.post("/review", async(req,res) => {
+app.post("/reviews", async(req,res) => {
   const book_id = req.body.isbn;
   const review = req.body.review;
 
@@ -219,7 +219,6 @@ app.delete("/reviews/:id", async(req,res) => {
     res.status(500).send("Server error");
   }
 })
-
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
