@@ -1,0 +1,77 @@
+<section class="detail-container">
+  <div class="book-container">
+    <div class="book-category container">
+      <p><a href="/">Home</a></p>
+      -
+      <p><a href="/"><%= book.genre %></a></p>
+      -
+      <p><%= book.title %></p>
+    </div>
+    <ul class="row">
+        <li class="col-lg-2 col-2"></li>
+        <li class="col-lg-4 col-8">
+          <div class="book-cover">
+            <img
+              src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-M.jpg"
+              alt="<%= book.title %>"
+            />
+          </div>
+        </li>
+        <li class="col-lg-6 col-12">
+          <p><%= book.title %></p>
+          <p><%= book.description %></p>
+          <p><%= book.rate %></p>
+          <button>Edit</button>
+          <button>Delete</button>
+        </li>
+      </ul>
+  </div>
+
+  <div class="review-container">
+    <div class="review-item">
+      <h5>Reviews</h5>
+
+      <% if (locals.reviews.length > 0) { %>
+      <ul>
+        <% reviews.forEach(review => { %>
+        <li>
+          <p><%= review.text %></p>
+          <button>Edit</button>
+          <button>Delete</button>
+        </li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <p><%= reviewMessage || "No reviews yet." %></p>
+      <% } %>
+    </div>
+
+    <hr />
+
+    <div class="review-item">
+      <h5>Add a review</h5>
+      <div class="form">
+        <form
+          action="<%= locals.id ? `/upload/${id}` : '/upload' %>"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <label for="review">Your review</label>
+          <textarea
+            class="input"
+            type="text"
+            name="review"
+            id="review"
+            rows="2"
+            cols="65"
+            equired
+          ><%= locals.quote ? quote : "" %></textarea>
+
+          <div class="form-btn">
+            <input class="btn third" type="submit" value="Save" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

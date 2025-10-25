@@ -1,0 +1,85 @@
+.detail-container {
+  margin-top: 100px;
+}
+
+.book-container {
+  padding: 50px auto;
+  background-image: url("/images/hero_background_13.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+}
+
+.row {
+  padding: 50px 0;
+}
+
+.book-category > p{
+  display: inline;
+}
+
+.book-category a{
+  color: white;
+}
+
+.book-cover {
+  position: relative;
+  padding-right: 75px;
+  width: 100%;
+  border-radius: 2px 10px 10px 2px;
+}
+
+.book-cover img{
+  width: 100%;
+  border-radius: 2px 10px 10px 2px;
+}
+
+.book-cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.7) 1px,
+    rgba(0,0,0,0.3) 25%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.5) 75%,
+    rgba(255,255,255,0.1) 100%);
+  box-shadow: 1px 0 5px rgba(255, 255, 255, 0.1);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 1%, black 99%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 1%, black 99%, transparent 100%);
+}
+
+.review-container {
+  padding: 50px 350px;
+}
+
+.review-item {
+  padding-bottom: 20px;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-size: var(--text-size);
+  border-bottom: 3px solid #eaeaea;
+  color: #7a7a7a;
+  background-color: transparent;
+}
+
+.input:focus {
+  border-bottom: 3px solid #eaeaea;
+  outline: none;
+  box-shadow: none;
+}
+
+.input::selection {
+  background: #f66e5e;
+  color: white;
+}

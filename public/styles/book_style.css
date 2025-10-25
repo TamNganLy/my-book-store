@@ -80,8 +80,6 @@
 }
 
 .cover {
-  /* background: linear-gradient(45deg,  #DAD5DC 0%, #f2ebf4 100%);
-  box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.1);  */
   width: var(--book-width);
   height: var(--book-height);
   border-radius: 0 5px 5px 0;
@@ -147,4 +145,8 @@
   box-shadow: 1px 0 5px rgba(255, 255, 255, 0.1);
   mask-image: linear-gradient(to bottom, transparent 0%, black 1%, black 99%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 1%, black 99%, transparent 100%);
+}
+
+.my-container p {
+  font-family: var(--text-font);
 }

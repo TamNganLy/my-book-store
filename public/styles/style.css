@@ -1,6 +1,8 @@
 :root {
-  --font: "Tinos", serif;
-  --text-font: 'Sabon', serif;
+  --font: "Source Sans Pro", serif;
+  --font: "Fanwood Text", serif;
+  --text-font: "Lora", serif;
+  --text-font: "Quicksand", serif;
 
   --first-color: #F5DDC2;
   --second-color: rgb(189, 155, 105);
@@ -76,6 +78,7 @@ ul {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   background-color: transparent !important;
   z-index: 1000;
+  padding: 0 100px;
 }
 
 .custom-navbar.scrolled {

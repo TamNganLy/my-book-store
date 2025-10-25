@@ -1,0 +1,45 @@
+
+    <!-- Hero -->
+    <%- include("hero")%>
+
+    <div>
+      <img
+        src="/images/cherry-blossom-branch.png"
+        alt="break image"
+        height="50"
+      />
+      <p>"So many books, so little time."</p>
+      <p>Frank Zappa</p>
+    </div>
+
+    <!-- Book shelves -->
+    <section class="container">
+      <ul class="row">
+        <% books.forEach(book => { %>
+        <li class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+          <a href="/isbn/<%= book.id %>">
+            <div class="my-container" >
+              <div class="book">
+                <div class="front">
+                  <div class="cover">
+                    <img
+                      src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-M.jpg"
+                      alt="<%= book.title %>"
+                    />
+                  </div>
+                </div>
+                <div class="left-side">
+                  <img
+                    src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-M.jpg"
+                    alt="<%= book.title %>"
+                  />
+                </div>
+              </div>
+              <p><%= book.title %></p>
+            </div>
+          </a>
+          <p><%= book.rate %></p>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
