@@ -16,3 +16,19 @@ if (currentPage === "main") {
   navbar.classList.add("scrolled");
   navbar.classList.remove("navbar-dark", "bg-dark");
 }
+
+function handler(id) {
+  document.getElementById("text" + id).setAttribute("hidden", true)
+  document.getElementById("edit" + id).setAttribute("hidden", true)
+  document.getElementById("done" + id).removeAttribute("hidden")
+  document.getElementById("input" + id).removeAttribute("hidden")
+  document.getElementById("cancel" + id).removeAttribute("hidden")
+}
+
+function handler_cancel(id) {
+  document.getElementById("text" + id).removeAttribute("hidden")
+  document.getElementById("edit" + id).removeAttribute("hidden")
+  document.getElementById("done" + id).setAttribute("hidden", true)
+  document.getElementById("input" + id).setAttribute("hidden", true)
+  document.getElementById("cancel" + id).setAttribute("hidden", true)
+}

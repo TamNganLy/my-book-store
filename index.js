@@ -57,6 +57,47 @@ app.get("/isbn/:isbn", async (req, res) => {
   }
 });
 
+app.post("/isbn/:isbn/add-review", async(req, res) => {
+    const isbn = req.params.isbn;
+
+  try {
+    const response = await axios.post(`${API_URL}/reviews`, req.body);
+    res.redirect(`/isbn/${isbn}`);
+  } catch (error) {
+    res.status(500).json({ message: "Error creating review" });
+  }
+})
+
+app.post("/isbn/:isbn/edit-review", async(req, res) => {
+    const isbn = req.params.isbn;
+    const id = req.body.id;
+
+  try {
+    const response = await axios.patch(`${API_URL}/reviews/${id}`, req.body);
+    res.redirect(`/isbn/${isbn}`);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: "Error edit review" });
+  }
+})
+
+app.post("/isbn/:isbn/delete-review", async(req, res) => {
+    const isbn = req.params.isbn;
+    const id = req.body.id;
+
+    console.log(isbn);
+    console.log(id);
+
+  try {
+    const response = await axios.delete(`${API_URL}/reviews/${id}`);
+    console.log(response.data);
+    res.redirect(`/isbn/${isbn}`);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: "Error delete review" });
+  }
+})
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

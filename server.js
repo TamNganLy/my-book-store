@@ -88,7 +88,7 @@ app.get("/books/search", async(req,res) => {
 app.get("/reviews/:isbn", async(req,res) => {
   try {
     const isbn = req.params.isbn;
-    const result = await db.query("SELECT * FROM reviews WHERE book_id = $1;", [isbn]);
+    const result = await db.query("SELECT * FROM reviews WHERE book_id = $1 ORDER BY id;", [isbn]);
 
     if (result.rows.length === 0) {
       return res.status(404).send("There is no review for this book. Please add one.");
@@ -213,7 +213,7 @@ app.delete("/reviews/:id", async(req,res) => {
   const deletedId = parseInt(req.params.id);
 
   try {
-    await db.query("DELETE FROM reviews WHERE id = $1", [deletedId]);
+    await db.query("DELETE FROM reviews WHERE id = $1 RETURNING *", [deletedId]);
     res.status(200).send("Review deleted.");
   } catch (err) {
     res.status(500).send("Server error");

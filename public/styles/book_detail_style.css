@@ -1,9 +1,9 @@
 .detail-container {
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .book-container {
-  padding: 50px auto;
+  padding: 50px 0;
   background-image: url("/images/hero_background_13.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 }
 
 .row {
-  padding: 50px 0;
+  padding-bottom: 50px;
 }
 
 .book-category > p{
