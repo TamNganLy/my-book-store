@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // GET All books
 app.get("/books", async(req,res) => {
   try {
-    const result = await db.query("SELECT * FROM books;");
+    const result = await db.query("SELECT * FROM books ORDER BY date_add;");
     res.json(result.rows);
   } catch (err) {
     console.error(err);
@@ -145,6 +145,7 @@ app.post("/reviews", async(req,res) => {
 app.patch("/books/:isbn", async(req,res) => {
   const isbn = req.params.isbn;
   const title = req.body.updatedTitle || null;
+  const author = req.body.updatedAuthor || null;
   const description = req.body.updatedDescription || null;
   const rate = req.body.updatedRate !== undefined && req.body.updatedRate !== "" ? 
     parseInt(req.body.updatedRate) : null;
@@ -157,10 +158,11 @@ app.patch("/books/:isbn", async(req,res) => {
          title = COALESCE($1, title),
          description = COALESCE($2, description),
          rate = COALESCE($3, rate),
-         genre = COALESCE($4, genre)
-       WHERE id = $5
+         genre = COALESCE($4, genre),
+         author = COALESCE($5, author)
+       WHERE id = $6
        RETURNING *;`,
-      [title, description, rate, genre, isbn]
+      [title, description, rate, genre, author, isbn]
     );
 
     if (result.rows.length === 0) {

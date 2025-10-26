@@ -13,7 +13,7 @@ app.use(express.static("public"));
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get(`${API_URL}/books`);
-    // console.log(response.data);
+    
     res.render("index.ejs", {
       nav: "main",
       books: response.data,
@@ -65,14 +65,35 @@ app.get("/isbn/:isbn", async (req, res) => {
 
 app.post("/add-book", async(req, res) => {
   try {
-    const response = await axios.post(`${API_URL}/books`, req.body);
-
-    console.log(response.data);
-
-    // res.redirect(`/isbn/${isbn}`);
+    await axios.post(`${API_URL}/books`, req.body);
     res.redirect("/");
   } catch (error) {
+    res.redirect("/add-book");
     res.status(500).json({ message: "Error creating book" });
+  }
+})
+
+app.post("/isbn/:isbn/edit-book", async(req, res) => {
+    const isbn = req.params.isbn;
+
+  try {
+    await axios.patch(`${API_URL}/books/${isbn}`, req.body);
+    res.redirect(`/isbn/${isbn}`);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: "Error edit book" });
+  }
+})
+
+app.post("/isbn/:isbn/delete-book", async(req, res) => {
+  const isbn = req.params.isbn;
+
+  try {
+    await axios.delete(`${API_URL}/books/${isbn}`);
+    res.redirect("/");
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ message: "Error delete book" });
   }
 })
 
@@ -81,7 +102,7 @@ app.post("/isbn/:isbn/add-review", async(req, res) => {
     const isbn = req.params.isbn;
 
   try {
-    const response = await axios.post(`${API_URL}/reviews`, req.body);
+    await axios.post(`${API_URL}/reviews`, req.body);
     res.redirect(`/isbn/${isbn}`);
   } catch (error) {
     res.status(500).json({ message: "Error creating review" });
@@ -93,7 +114,7 @@ app.post("/isbn/:isbn/edit-review", async(req, res) => {
     const id = req.body.id;
 
   try {
-    const response = await axios.patch(`${API_URL}/reviews/${id}`, req.body);
+    await axios.patch(`${API_URL}/reviews/${id}`, req.body);
     res.redirect(`/isbn/${isbn}`);
   } catch (error) {
     console.log(error.message);
@@ -105,12 +126,8 @@ app.post("/isbn/:isbn/delete-review", async(req, res) => {
     const isbn = req.params.isbn;
     const id = req.body.id;
 
-    console.log(isbn);
-    console.log(id);
-
   try {
-    const response = await axios.delete(`${API_URL}/reviews/${id}`);
-    console.log(response.data);
+    await axios.delete(`${API_URL}/reviews/${id}`);
     res.redirect(`/isbn/${isbn}`);
   } catch (error) {
     console.log(error.message);

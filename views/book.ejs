@@ -24,12 +24,72 @@
           </div>
         </li>
         <li class="col-lg-5 col-12">
-          <p><%= book.title %></p>
-          <p><%= book.author %></p>
-          <p><%= book.description %></p>
-          <p><%= book.rate %></p>
-          <button>Edit</button>
-          <button>Delete</button>
+          <p id="title<%=book.id%>"><%= book.title %></p>
+          <p id="author<%=book.id%>"><%= book.author %></p>
+          <p id="description<%=book.id%>"><%= book.description %></p>
+          <p id="rate<%=book.id%>"><%= book.rate %></p>
+
+          <form action="/isbn/<%=book.id%>/edit-book" method="POST">
+            <input 
+              class="input"
+              id="updatedTitle<%=book.id%>" 
+              type="text" 
+              name="updatedTitle" 
+              value="<%= book.title %>" 
+              autocomplete="off"
+              autofocus="true" 
+              hidden="true" />
+
+            <input 
+              class="input"
+              id="updatedAuthor<%=book.id%>" 
+              type="text" 
+              name="updatedAuthor" 
+              value="<%= book.author %>" 
+              autocomplete="off"
+              autofocus="true" 
+              hidden="true" />
+
+            <textarea 
+              class="input"
+              id="updatedDescription<%=book.id%>" 
+              type="text" 
+              name="updatedDescription"
+              rows="5" 
+              autocomplete="off"
+              autofocus="true" 
+              hidden="true"
+            ><%= book.description %></textarea>
+
+            <select 
+              class="input" 
+              id="updatedRate<%=book.id%>"  
+              name="updatedRate" 
+              autocomplete="off"
+              hidden
+            >
+              <option value="1" <%= book.rate == 1 ? "selected" : "" %>>1</option>
+              <option value="2" <%= book.rate == 2 ? "selected" : "" %>>2</option>
+              <option value="3" <%= book.rate == 3 ? "selected" : "" %>>3</option>
+              <option value="4" <%= book.rate == 4 ? "selected" : "" %>>4</option>
+              <option value="5" <%= book.rate == 5 ? "selected" : "" %>>5</option>
+            </select>
+
+            <button id="done<%=book.id%>" type="submit" hidden>
+              <img width="20" src="/images/check-solid.svg" alt="tick image">
+            </button>
+            <button id="cancel<%=book.id%>" type="button" hidden  onclick="handler_cancel_book('<%=book.id%>')">
+              Cancel
+            </button>
+          </form>
+
+          <button id="edit<%=book.id%>" onclick="handler_book('<%=book.id%>')">
+            <img width="20" height="20" src="/images/pencil-solid.svg" alt="pencil image">
+          </button>
+
+          <form action="/isbn/<%=book.id%>/delete-book" method="POST">
+            <button type="submit" >Delete</button>
+          </form>
         </li>
         <li class="col-lg-2 col-2"></li>
       </ul>
@@ -43,19 +103,19 @@
       <ul>
         <% reviews.forEach(review => { %>
         <li>
-          <p  id="text<%=review.id%>"><%= review.text %></p>
+          <p id="text<%=review.id%>"><%= review.text %></p>
 
           <form action="/isbn/<%=book.id%>/edit-review" method="POST">
             <input type="hidden" name="id" value="<%= review.id %>">
-            <input 
+            <textarea 
               class="input"
               id="input<%=review.id%>" 
               type="text" 
               name="updatedReview" 
-              value="<%= review.text %>" 
+              rows="2" 
               autocomplete="off"
               autofocus="true" 
-              hidden="true" />
+              hidden="true"><%= review.text %></textarea>
             <button id="done<%=review.id%>" type="submit" hidden>
               <img width="20" src="/images/check-solid.svg" alt="tick image">
             </button>
@@ -67,8 +127,6 @@
           <button id="edit<%=review.id%>" onclick="handler('<%=review.id%>')">
             <img width="20" height="20" src="/images/pencil-solid.svg" alt="pencil image">
           </button>
-          <!-- <button>Edit</button> -->
-
           <form action="/isbn/<%=book.id%>/delete-review" method="POST">
             <input type="hidden" name="id" value="<%= review.id %>">
             <button type="submit" >Delete</button>
