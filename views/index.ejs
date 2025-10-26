@@ -27,7 +27,13 @@
     <%- include("header")%>
 
     <!-- Body -->
-    <%- locals.nav === "main" ? include("main") : include("book") %>
+    <% if (locals.nav === "main") { %>
+      <%- include("main")%>
+    <% } else if (locals.nav === "book") { %>
+      <%- include("book")%>
+    <% } else if (locals.nav === "add-book") { %>
+      <%- include("add-book")%>
+    <% } %>
 
     <!-- Footer -->
     <%- include("footer")%>

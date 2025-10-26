@@ -1,0 +1,37 @@
+<section class="detail-container">
+  <h2>Add New Book</h2>
+
+  <div>
+    <form action="/add-book" method="POST" >
+      <label for="title">Title *</label>
+      <input class="input" type="text" name="title" id="title" required />
+
+      <label for="isbn">Isbn *</label>
+      <input class="input" type="text" name="id" id="id" required />
+
+      <label for="author">Author</label>
+      <input class="input" type="text" name="author" id="author" required />
+      
+      <label for="description">description</label>
+      <textarea class="input" type="text" name="description" id="description" rows="5" ></textarea>
+
+      <label for="rate">Rate *</label>
+      <select class="input" name="rate" id="rate" required>
+        <option value="" disabled selected>Select rating</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <label for="genre">Genre</label>
+      <input class="input" type="text" name="genre" id="genre" />
+
+      <div class="form-btn">
+        <input class="btn third" type="submit" value="Save" />
+      </div>
+    </form>
+  </div>
+
+</section>

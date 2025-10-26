@@ -11,7 +11,7 @@ if (currentPage === "main") {
       navbar.classList.add("navbar-dark", "bg-dark");
     }
   });
-} else if (currentPage === "book") {
+} else {
   // always scrolled
   navbar.classList.add("scrolled");
   navbar.classList.remove("navbar-dark", "bg-dark");

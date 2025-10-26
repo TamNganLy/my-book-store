@@ -25,6 +25,7 @@
         </li>
         <li class="col-lg-5 col-12">
           <p><%= book.title %></p>
+          <p><%= book.author %></p>
           <p><%= book.description %></p>
           <p><%= book.rate %></p>
           <button>Edit</button>
@@ -47,6 +48,7 @@
           <form action="/isbn/<%=book.id%>/edit-review" method="POST">
             <input type="hidden" name="id" value="<%= review.id %>">
             <input 
+              class="input"
               id="input<%=review.id%>" 
               type="text" 
               name="updatedReview" 

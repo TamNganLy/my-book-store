@@ -24,6 +24,12 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/add-book", async (req, res) => {
+  res.render("index.ejs", {
+      nav: "add-book"
+    });
+});
+
 app.get("/isbn/:isbn", async (req, res) => {
   const isbn = req.params.isbn;
 
@@ -56,6 +62,20 @@ app.get("/isbn/:isbn", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
+app.post("/add-book", async(req, res) => {
+  try {
+    const response = await axios.post(`${API_URL}/books`, req.body);
+
+    console.log(response.data);
+
+    // res.redirect(`/isbn/${isbn}`);
+    res.redirect("/");
+  } catch (error) {
+    res.status(500).json({ message: "Error creating book" });
+  }
+})
+
 
 app.post("/isbn/:isbn/add-review", async(req, res) => {
     const isbn = req.params.isbn;

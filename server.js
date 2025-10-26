@@ -108,11 +108,12 @@ app.post("/books", async(req,res) => {
   const description = req.body.description;
   const rate = req.body.rate;
   const genre = req.body.genre;
+  const author = req.body.author;
 
   try {
     const result = await db.query(
-      "INSERT INTO books (id, title, description, rate, genre) VALUES ($1, $2, $3, $4, $5) RETURNING *;",
-      [id, title, description, rate, genre]
+      "INSERT INTO books (id, title, description, rate, genre, author) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;",
+      [id, title, description, rate, genre, author]
     );
 
     res.json(result.rows);
