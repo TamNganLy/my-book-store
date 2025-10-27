@@ -89,7 +89,6 @@
 
 .custom-navbar.scrolled .nav-text {
   color: var(--six-color);
-  text-shadow: none;
 }
 
 .custom-navbar.scrolled .nav-link.active:hover .nav-text,
