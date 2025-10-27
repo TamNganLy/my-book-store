@@ -25,8 +25,8 @@
         </li>
         <li class="col-lg-5 col-12">
           <p id="title<%=book.id%>"><%= book.title %></p>
-          <p id="author<%=book.id%>"><%= book.author %></p>
-          <p id="description<%=book.id%>"><%= book.description %></p>
+          <p id="author<%= book.id %>"><%= book.author ? `By ${book.author}` : "" %></p>
+          <p class="book-description" id="description<%=book.id%>"><%= book.description %></p>
           <p id="rate<%=book.id%>"><%= book.rate %></p>
 
           <form action="/isbn/<%=book.id%>/edit-book" method="POST">

@@ -4,15 +4,16 @@
   --text-font: "Lora", serif;
   --text-font: "Quicksand", serif;
 
-  --first-color: #F5DDC2;
-  --second-color: rgb(189, 155, 105);
-  --third-color: #FC7100;
-  --fourth-color: #F45F67;
-  --fifth-color: #5CA135;
+  --first-color: #fafafa;
+  --second-color: #39baaf;
+  --third-color: #f66e5e;
+  --fourth-color: #7a7a7a;
+  --fifth-color: white;
+  --six-color: #484848;
 
   --info-title-size: 1rem;
   --large-size: 3rem;
-  --medium-size: 1.5rem;
+  --medium-size: 1.2rem;
   --small-size: 1rem;
 
   --book-width: 240px;
@@ -69,21 +70,6 @@ ul {
   position: relative;
   /* top: 150px; */
   left: -150px;
-}
-
-.custom-navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  background-color: transparent !important;
-  z-index: 1000;
-  padding: 0 100px;
-}
-
-.custom-navbar.scrolled {
-  background-color: white !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 

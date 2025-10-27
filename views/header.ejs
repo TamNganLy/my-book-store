@@ -5,6 +5,7 @@
   <div class="container-fluid" bis_skin_checked="1">
     <a class="navbar-brand" href="/">
       <img src="/images/book.png" alt="book image" width="100"/>
+      Tam's Bookstore
     </a>
     <button
       class="navbar-toggler"
@@ -24,7 +25,7 @@
     >
       <ul class="navbar-nav ms-auto mb-2 mb-sm-0 align-items-center">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link <%= nav === 'main' ? 'active' : '' %>" aria-current="page" href="/"><p class="nav-text">Home</p></a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -32,16 +33,18 @@
             href="/"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            >Genre</a
+            ><p class="nav-text">Genre</p></a
           >
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Fiction</a></li>
-            <li><a class="dropdown-item" href="#">Fantasy</a></li>
-            <li><a class="dropdown-item" href="#">Romantic</a></li>
+            <li><a class="dropdown-item" href="#"><p>Fiction</p></a></li>
+            <li><a class="dropdown-item" href="#"><p>Fantasy</p></a></li>
+            <li><a class="dropdown-item" href="#"><p>Romantic</p></a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="/add-book">Add Book</a></li>
-        <li class="nav-item"><a class="nav-link" href="/">Contact</a></li>
+        <li class="nav-item">
+          <a class="nav-link <%= nav === 'add-book' ? 'active' : '' %>" href="/add-book"><p class="nav-text">Add Book</p></a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/"><p class="nav-text">Contact</p></a></li>
       </ul>
       <form role="search">
         <input

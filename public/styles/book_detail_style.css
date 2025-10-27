@@ -41,7 +41,7 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 20px;
+  width: 15px;
   background: linear-gradient(
     to right,
     rgba(0,0,0,0.7) 1px,
@@ -52,6 +52,10 @@
   box-shadow: 1px 0 5px rgba(255, 255, 255, 0.1);
   mask-image: linear-gradient(to bottom, transparent 0%, black 1%, black 99%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 1%, black 99%, transparent 100%);
+}
+
+.book-description {
+  white-space: pre-wrap; /* preserves line breaks and wraps text */
 }
 
 .review-container {

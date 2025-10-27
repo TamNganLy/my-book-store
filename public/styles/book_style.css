@@ -100,24 +100,33 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 15px;
+  width: 10px;
   background: linear-gradient(
     to right,
-    rgba(0,0,0,0.7) 1px,
+    rgba(0,0,0,1) 1px,
     rgba(0,0,0,0.3) 25%,
     rgba(255,255,255,0.3) 50%,
-    rgba(255,255,255,0.5) 75%,
-    rgba(255,255,255,0.1) 100%);
+    rgba(255,255,255,0.5) 60%,
+    rgba(255,255,255,0.1) 99%);
   box-shadow: 1px 0 5px rgba(255, 255, 255, 0.1);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(
+    to bottom, 
+    transparent 0%,   
+    black 1%, 
+    black 99%, 
+    transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom, 
+    transparent 0%,  
+    black 1%, 
+    black 99%, 
+    transparent 100%);
 }
 
 .left-side{
   width: 40px;
   left: -20px;
   height: var(--book-height);
-  background-color: rgba(232,229,234);
   -webkit-transform: rotate3d(0,1,0,-90deg);
   -moz-transform: rotate3d(0,1,0,-90deg);
   transform: rotate3d(0,1,0,-90deg);
@@ -141,10 +150,28 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background:rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.5) 70%,
+    rgba(0,0,0,0.4) 80%,
+    rgba(255,255,255,0.05) 90%,
+    rgba(0,0,0,0.5) 95%,
+    rgba(0,0,0,0.7) 97%,
+    rgba(0,0,0,1) 99%
+    );
   box-shadow: 1px 0 5px rgba(255, 255, 255, 0.1);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 1%, black 99%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 1%, black 99%, transparent 100%);
+  mask-image: linear-gradient(
+    to bottom, 
+    transparent 0%,  
+    black 1%, 
+    black 99%, 
+    transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom, 
+    transparent 0%, 
+    black 1%, 
+    black 99%, 
+    transparent 100%);
 }
 
 .my-container p {
