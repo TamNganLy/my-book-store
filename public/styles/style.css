@@ -1,5 +1,5 @@
 :root {
-  --font: "Source Sans Pro", serif;
+  --web-name-font: "Source Sans Pro", serif;
   --font: "Fanwood Text", serif;
   --text-font: "Lora", serif;
   --text-font: "Quicksand", serif;
@@ -10,8 +10,10 @@
   --fourth-color: #7a7a7a;
   --fifth-color: white;
   --six-color: #484848;
+  --seven-color: rgba(0, 0, 0, 0.34);
 
   --info-title-size: 1rem;
+  --xxl-large-size: 4rem;
   --large-size: 3rem;
   --medium-size: 1.2rem;
   --small-size: 1rem;
@@ -42,35 +44,8 @@ ul {
   padding: 0;
 }
 
-.hero-container {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  background-image: url('/images/hero_background_20.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 900px;
-  padding: 250px;
+*::selection {
+  background: #f66e5e;
+  color: white;
 }
-
-.hero-text-container {
-  position: absolute;
-  width: 570px;
-  height: 570px;
-  background-color: white;
-  padding: 50px;
-}
-
-.hero-text {
-  text-align: center;
-}
-
-.leaf {
-  position: relative;
-  /* top: 150px; */
-  left: -150px;
-}
-
-
 
