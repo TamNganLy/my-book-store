@@ -1,21 +1,34 @@
 const navbar = document.querySelector(".custom-navbar");
 
-if (currentPage === "main") {
-  // normal scroll behavior
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 0) {
+// initial load
+function applyNavbarState() {
+  if (currentPage === "main") {
+    if (window.innerWidth < 992) {
       navbar.classList.add("scrolled");
-      navbar.classList.remove("navbar-dark", "bg-dark");
+      navbar.classList.remove("navbar-dark", "bg-dark", "container-fluid");
     } else {
-      navbar.classList.remove("scrolled");
-      navbar.classList.add("navbar-dark", "bg-dark");
+      if (window.scrollY > 0) {
+        navbar.classList.add("scrolled");
+        navbar.classList.remove("navbar-dark", "bg-dark");
+      } else {
+        navbar.classList.remove("scrolled");
+        navbar.classList.add("navbar-dark", "bg-dark");
+      }
     }
-  });
-} else {
-  // always scrolled
-  navbar.classList.add("scrolled");
-  navbar.classList.remove("navbar-dark", "bg-dark");
+  } else {
+    navbar.classList.add("scrolled");
+    navbar.classList.remove("navbar-dark", "bg-dark");
+  }
 }
+
+// run on load
+applyNavbarState();
+
+// run on scroll
+window.addEventListener("scroll", applyNavbarState);
+
+// ✅ run on resize
+window.addEventListener("resize", applyNavbarState);
 
 function handler(id) {
   document.getElementById("text" + id).setAttribute("hidden", true)

@@ -2,21 +2,21 @@
     <!-- Hero -->
     <%- include("hero")%>
 
-    <div>
+    <div class="quote-container">
       <img
         src="/images/cherry-blossom-branch.png"
         alt="break image"
-        height="50"
+        height="75"
       />
-      <p>"So many books, so little time."</p>
-      <p>Frank Zappa</p>
+      <p class="quote">"So many books, so little time."</p>
+      <p class="quote-author">FRANK ZAPPA</p>
     </div>
 
     <!-- Book shelves -->
     <section class="container">
       <ul class="row">
         <% books.forEach(book => { %>
-        <li class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+        <li class="col-xl-3 col-lg-4 col-md-6 col-sm-6 book-grid">
           <a href="/isbn/<%= book.id %>">
             <div class="my-container" >
               <div class="book">
@@ -35,10 +35,10 @@
                   />
                 </div>
               </div>
-              <p><%= book.title %></p>
+              <p class="book-title"><%= book.title %></p>
             </div>
           </a>
-          <p><%= book.rate %></p>
+          <p class="book-rate">Rate: <%= book.rate %>/5</p>
         </li>
         <% }) %>
       </ul>

@@ -1,0 +1,34 @@
+.quote-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px;
+}
+
+.quote {
+  font-family: var(--other-font);
+  font-size: var(--large-size);
+}
+
+.quote-author {
+  font-family: var(--font);
+  font-size: var(--medium-size);
+  color: var(--seven-color);
+  font-weight: 700;
+}
+
+.book-title {
+  color: var(--fourth-color);
+  font-weight: 700;
+  text-align: center;
+}
+
+.book-rate {
+  color: var(--second-color);
+  font-weight: 700;
+}
+
+.row {
+  padding-bottom: 0 !important;
+}

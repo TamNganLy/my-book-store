@@ -1,5 +1,14 @@
-
+.book-grid {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 .my-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   z-index: 1;
   perspective:3000px;
   width: 300px;
@@ -176,4 +185,8 @@
 
 .my-container p {
   font-family: var(--text-font);
+}
+
+.book-title {
+
 }

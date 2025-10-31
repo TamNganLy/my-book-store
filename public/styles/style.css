@@ -1,16 +1,18 @@
 :root {
-  --web-name-font: "Source Sans Pro", serif;
-  --font: "Fanwood Text", serif;
-  --text-font: "Lora", serif;
+  --logo-font: "Style Script", sans-serif;
+  --font: "Source Sans 3", sans-serif;
+  --web-name-font: "Fanwood Text", serif;
+  --other-font: "Lora", serif;
   --text-font: "Quicksand", serif;
 
   --first-color: #fafafa;
-  --second-color: #39baaf;
-  --third-color: #f66e5e;
+  --second-color: #f66e5e;
+  --third-color: #39baaf;
   --fourth-color: #7a7a7a;
   --fifth-color: white;
   --six-color: #484848;
   --seven-color: rgba(0, 0, 0, 0.34);
+  --eight-color: #f3f3f3;
 
   --info-title-size: 1rem;
   --xxl-large-size: 4rem;
@@ -31,6 +33,7 @@ html, body {
   width: 100%;
   font-family: var(--text-font);
   background-color: #fafafa;
+  font-family: var(--text-font);
 }
 
 a {
