@@ -19,9 +19,14 @@
   text-align: left;
 }
 
+.left-container {
+  height: 0;
+}
+
 .leaf {
   position: relative;
-  left: -100px;
+  top: -50px;
+  left: -175px;
 }
 
 .hero-text span {
@@ -59,4 +64,36 @@
 
 .hero-btn:hover {
   color: var(--second-color);
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 770px) {
+  .hero-text-container {
+    width: 80%;
+    height: auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-text-container {
+    width: 80%;
+    padding: 50px;
+  }
+
+  .hero-container {
+    padding: 150px;
+  }
+
+  .hero-text, .hero-text span {
+    font-size: var(--large-size);
+  }
+  
+  .leaf {
+    left: -150px;
+  }
 }

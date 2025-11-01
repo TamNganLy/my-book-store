@@ -9,6 +9,7 @@
 .quote {
   font-family: var(--other-font);
   font-size: var(--large-size);
+  text-align: center;
 }
 
 .quote-author {

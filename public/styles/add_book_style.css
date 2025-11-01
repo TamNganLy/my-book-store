@@ -1,5 +1,5 @@
 .add-book-container {
-  padding: 0 10% 0 10%;
+  padding: 20px 10% 0 10%;
 }
 
 .add-book-container > .first {
@@ -44,6 +44,10 @@
   .add-book-container > .first > img{
     height: 50px;
   }
+
+  .add-book-container .input-rate {
+    width: 50%;
+  }
 }
 
 @media (max-width: 490px) {
@@ -57,5 +61,9 @@
 
   .add-book-container > .first > img{
     height: 40px;
+  }
+
+  .add-book-container .input-rate {
+    width: 100%;
   }
 }
