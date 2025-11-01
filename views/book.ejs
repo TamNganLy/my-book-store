@@ -4,7 +4,7 @@
         <li class="col-lg-2 col-3"></li>
         <li class="col-lg-8 col-7">
           <div class="book-category">
-            <p><a href="/">Home</a></p>
+            <p><a href="/">HOME</a></p>
             -
             <p><a href="/"><%= book.genre %></a></p>
             -
@@ -15,23 +15,25 @@
     
     <ul class="row">
         <li class="col-lg-2 col-3"></li>
-        <li class="col-lg-3 col-8">
+        <li class="col-lg-4 col-8">
           <div class="book-cover">
             <img
-              src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-M.jpg"
+              src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-L.jpg"
               alt="<%= book.title %>"
             />
           </div>
         </li>
-        <li class="col-lg-5 col-12">
-          <p id="title<%=book.id%>"><%= book.title %></p>
-          <p id="author<%= book.id %>"><%= book.author ? `By ${book.author}` : "" %></p>
-          <p class="book-description" id="description<%=book.id%>"><%= book.description %></p>
-          <p id="rate<%=book.id%>"><%= book.rate %></p>
+        <li class="col-lg-4 col-12 info">
+          <h1 class="book-detail-title" id="title<%=book.id%>"><%= book.title %></h1>
+          <p class="book-detail-author" 
+          id="author<%= book.id %>"><%= book.author ? `By ${book.author}` : "" %></p>
+          <p class="book-detail-description" id="description<%=book.id%>"><%= book.description %></p>
+          <p class="book-detail-rate" 
+          id="rate<%=book.id%>">Rate: <%= book.rate %>/5</p>
 
           <form action="/isbn/<%=book.id%>/edit-book" method="POST">
             <input 
-              class="input"
+              class="input input-book"
               id="updatedTitle<%=book.id%>" 
               type="text" 
               name="updatedTitle" 
@@ -41,7 +43,7 @@
               hidden="true" />
 
             <input 
-              class="input"
+              class="input input-book"
               id="updatedAuthor<%=book.id%>" 
               type="text" 
               name="updatedAuthor" 
@@ -51,18 +53,18 @@
               hidden="true" />
 
             <textarea 
-              class="input"
+              class="input input-book"
               id="updatedDescription<%=book.id%>" 
               type="text" 
               name="updatedDescription"
-              rows="5" 
+              rows="15" 
               autocomplete="off"
               autofocus="true" 
               hidden="true"
             ><%= book.description %></textarea>
 
             <select 
-              class="input" 
+              class="input input-book input-rate" 
               id="updatedRate<%=book.id%>"  
               name="updatedRate" 
               autocomplete="off"
@@ -75,21 +77,26 @@
               <option value="5" <%= book.rate == 5 ? "selected" : "" %>>5</option>
             </select>
 
-            <button id="done<%=book.id%>" type="submit" hidden>
-              <img width="20" src="/images/check-solid.svg" alt="tick image">
-            </button>
-            <button id="cancel<%=book.id%>" type="button" hidden  onclick="handler_cancel_book('<%=book.id%>')">
-              Cancel
-            </button>
+            <br id="break<%=book.id%>" hidden/>
+            <div class="btn-update-container" id="btn<%=book.id%>" hidden>
+              <button class="btn-update" id="done<%=book.id%>" type="submit">
+                <img width="30" src="/images/yes.png" alt="tick image" />
+              </button>
+              <button class="btn-update" id="cancel<%=book.id%>" type="button"  onclick="handler_cancel_book('<%=book.id%>')">
+                <img width="30" src="/images/no.png" alt="x image" />
+              </button>
+            </div>
           </form>
 
-          <button id="edit<%=book.id%>" onclick="handler_book('<%=book.id%>')">
-            <img width="20" height="20" src="/images/pencil-solid.svg" alt="pencil image">
+         <div class="btn-container">
+           <button class="btn btn-primary" id="edit<%=book.id%>" onclick="handler_book('<%=book.id%>')">
+            Edit
           </button>
 
           <form action="/isbn/<%=book.id%>/delete-book" method="POST">
-            <button type="submit" >Delete</button>
+            <button class="btn btn-primary" type="submit" >Delete</button>
           </form>
+         </div>
         </li>
         <li class="col-lg-2 col-2"></li>
       </ul>
@@ -97,12 +104,12 @@
 
   <div class="review-container">
     <div class="review-item">
-      <h5>Reviews</h5>
+      <h2>Reviews</h2>
 
       <% if (locals.reviews.length > 0) { %>
       <ul>
         <% reviews.forEach(review => { %>
-        <li>
+        <li class="review">
           <p id="text<%=review.id%>"><%= review.text %></p>
 
           <form action="/isbn/<%=book.id%>/edit-review" method="POST">
@@ -116,21 +123,26 @@
               autocomplete="off"
               autofocus="true" 
               hidden="true"><%= review.text %></textarea>
-            <button id="done<%=review.id%>" type="submit" hidden>
-              <img width="20" src="/images/check-solid.svg" alt="tick image">
-            </button>
-            <button id="cancel<%=review.id%>" type="button" hidden  onclick="handler_cancel('<%=review.id%>')">
-              Cancel
-            </button>
+              <br id="break<%=review.id%>" hidden/>
+            <div class="btn-update-container" id="btn<%=review.id%>" hidden>
+              <button class="btn-update" id="done<%=review.id%>" type="submit">
+                <img width="30" src="/images/yes.png" alt="tick image" />
+              </button>
+              <button class="btn-update" id="cancel<%=review.id%>" type="button" onclick="handler_cancel('<%=review.id%>')">
+                <img width="30" src="/images/no.png" alt="x image" />
+              </button>
+            </div>
           </form>
 
-          <button id="edit<%=review.id%>" onclick="handler('<%=review.id%>')">
-            <img width="20" height="20" src="/images/pencil-solid.svg" alt="pencil image">
+          <div class="btn-update-container">
+            <button class="btn-review" id="edit<%=review.id%>" onclick="handler('<%=review.id%>')">
+            Edit
           </button>
           <form action="/isbn/<%=book.id%>/delete-review" method="POST">
             <input type="hidden" name="id" value="<%= review.id %>">
-            <button type="submit" >Delete</button>
+            <button class="btn-review" type="submit" >Delete</button>
           </form>
+          </div>
         </li>
         <% }) %>
       </ul>
@@ -139,17 +151,16 @@
       <% } %>
     </div>
 
-    <hr />
-
     <div class="review-item">
-      <h5>Add a review</h5>
+      <h2>Add a review</h2>
       <div class="form">
         <form action="/isbn/<%=book.id%>/add-review" method="POST" >
           <input type="hidden" name="isbn" value="<%= book.id %>">
-          <label for="review">Your review</label>
+          <label for="review">Your review *</label>
           <textarea class="input" type="text" name="review" id="review" rows="2" required ></textarea>
+          <br />
           <div class="form-btn">
-            <input class="btn third" type="submit" value="Save" />
+            <input class="btn btn-secondary" type="submit" value="Save" />
           </div>
         </form>
       </div>
