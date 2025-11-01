@@ -79,10 +79,10 @@
 
             <br id="break<%=book.id%>" hidden/>
             <div class="btn-update-container" id="btn<%=book.id%>" hidden>
-              <button class="btn-update" id="done<%=book.id%>" type="submit">
+              <button class="btn-update rounded-circle" id="done<%=book.id%>" type="submit">
                 <img width="30" src="/images/yes.png" alt="tick image" />
               </button>
-              <button class="btn-update" id="cancel<%=book.id%>" type="button"  onclick="handler_cancel_book('<%=book.id%>')">
+              <button class="btn-update rounded-circle" id="cancel<%=book.id%>" type="button"  onclick="handler_cancel_book('<%=book.id%>')">
                 <img width="30" src="/images/no.png" alt="x image" />
               </button>
             </div>
@@ -125,10 +125,10 @@
               hidden="true"><%= review.text %></textarea>
               <br id="break<%=review.id%>" hidden/>
             <div class="btn-update-container" id="btn<%=review.id%>" hidden>
-              <button class="btn-update" id="done<%=review.id%>" type="submit">
+              <button class="btn-update rounded-circle" id="done<%=review.id%>" type="submit">
                 <img width="30" src="/images/yes.png" alt="tick image" />
               </button>
-              <button class="btn-update" id="cancel<%=review.id%>" type="button" onclick="handler_cancel('<%=review.id%>')">
+              <button class="btn-update rounded-circle" id="cancel<%=review.id%>" type="button" onclick="handler_cancel('<%=review.id%>')">
                 <img width="30" src="/images/no.png" alt="x image" />
               </button>
             </div>

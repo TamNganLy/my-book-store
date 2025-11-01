@@ -1,37 +1,56 @@
 <section class="detail-container">
-  <h2>Add New Book</h2>
+  <div class="add-book-container">
+    <div class="first">
+      <img
+        src="/images/cherry-blossom-branch.png"
+        alt="break image"
+        height="75"
+      />
+      <h1>Add New Book</h1>
+      <img
+        src="/images/cherry-blossom-branch.png"
+        alt="break image"
+        height="75"
+      />
+    </div>
 
-  <div>
-    <form action="/add-book" method="POST" >
-      <label for="title">Title *</label>
-      <input class="input" type="text" name="title" id="title" required />
+    <div>
+      <form action="/add-book" method="POST" >
+        <label for="title">Title *</label>
+        <input class="input" type="text" name="title" id="title" required />
 
-      <label for="isbn">Isbn *</label>
-      <input class="input" type="text" name="id" id="id" required />
+        <label for="isbn">Isbn *</label>
+        <input class="input" type="text" name="id" id="id" required />
 
-      <label for="author">Author</label>
-      <input class="input" type="text" name="author" id="author" />
-      
-      <label for="description">Description</label>
-      <textarea class="input" type="text" name="description" id="description" rows="5" ></textarea>
+        <label for="author">Author</label>
+        <input class="input" type="text" name="author" id="author" />
+        
+        <label for="description">Description</label>
+        <textarea class="input" type="text" name="description" id="description" rows="5" ></textarea>
 
-      <label for="rate">Rate *</label>
-      <select class="input" name="rate" id="rate" required>
-        <option value="" disabled selected>Select rating</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+        <label for="rate">Rate *</label>
 
-      <label for="genre">Genre</label>
-      <input class="input" type="text" name="genre" id="genre" />
+        <div class="input input-rate">
+          <div class="rate-selected">Select rating</div>
+          <ul class="rate-options">
+            <li data-value="1">1</li>
+            <li data-value="2">2</li>
+            <li data-value="3">3</li>
+            <li data-value="4">4</li>
+            <li data-value="5">5</li>
+          </ul>
+        </div>
+        <input type="text" name="rate" id="rate" required class="rate-hidden-input" />
 
-      <div class="form-btn">
-        <input class="btn third" type="submit" value="Save" />
-      </div>
-    </form>
+
+        <label for="genre">Genre</label>
+        <input class="input" type="text" name="genre" id="genre" />
+        <br />
+        <div class="form-btn">
+          <input class="btn btn-secondary" type="submit" value="Save" />
+        </div>
+      </form>
+    </div>
   </div>
 
 </section>

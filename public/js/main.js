@@ -30,6 +30,30 @@ window.addEventListener("scroll", applyNavbarState);
 // ✅ run on resize
 window.addEventListener("resize", applyNavbarState);
 
+document.addEventListener("DOMContentLoaded", function () {
+  const selected = document.querySelector(".rate-selected");
+  const options = document.querySelector(".rate-options");
+  const hidden = document.getElementById("rate");
+
+  selected.addEventListener("click", () => {
+    options.style.display = options.style.display === "block" ? "none" : "block";
+  });
+
+  options.querySelectorAll("li").forEach(li => {
+    li.addEventListener("click", () => {
+      selected.textContent = li.textContent;
+      hidden.value = li.dataset.value;
+      options.style.display = "none";
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!selected.parentElement.contains(e.target)) {
+      options.style.display = "none";
+    }
+  });
+});
+
 function handler(id) {
   document.getElementById("text" + id).setAttribute("hidden", true)
   document.getElementById("edit" + id).setAttribute("hidden", true)

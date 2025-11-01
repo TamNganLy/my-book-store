@@ -1,5 +1,5 @@
 .detail-container {
-  margin-top: 80px;
+  margin-top: 95px;
 }
 
 .detail-container * {
@@ -21,7 +21,7 @@
 }
 
 .book-container {
-  padding: 50px 0;
+  padding: 25px 0 50px 0;
   background-image: url("/images/hero_background_13.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -40,6 +40,10 @@
 .book-category > p {
   display: inline;
   padding: 0 20px;
+}
+
+.book-category a:hover{
+  color: var(--third-color);
 }
 
 .book-category > p, .book-category > p > a{
@@ -117,37 +121,6 @@
   padding-top: 25px;
 }
 
-.input {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border: none;
-  font-size: var(--text-size);
-  border-bottom: 3px solid #eaeaea;
-  color: var(--fourth-color);
-  background-color: transparent;
-}
-
-.input:focus {
-  border-bottom: 3px solid #eaeaea;
-  outline: none;
-  box-shadow: none;
-}
-
-.input::selection {
-  background: var(--second-color);
-  color: var(--fifth-color);
-}
-
-.input-book {
-  color: var(--first-color);
-  border-bottom: 3px solid var(--fourth-color);
-}
-
-.input-rate {
-  width: 50%;
-}
-
 .btn-update-container {
   display: flex;
   gap: 10px;
@@ -178,6 +151,16 @@
   margin: 0;
   background-color: transparent;
   border: transparent;
+}
+
+.btn-update:hover {
+  transform: translateY(-3px);
+  transition: all 0.1s;
+  box-shadow: 0px 3px 6px var(--six-color);
+}
+
+.book-container .row {
+  margin: 0 !important;
 }
 
 @media (max-width:992px) {

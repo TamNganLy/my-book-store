@@ -86,3 +86,65 @@ ul {
   background-color: var(--second-color);
   border: 2px solid var(--second-color);
 }
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  font-size: var(--text-size);
+  border-bottom: 3px solid #eaeaea;
+  color: var(--fourth-color);
+  background-color: transparent;
+}
+
+.input:focus {
+  border-bottom: 3px solid #eaeaea;
+  outline: none;
+  box-shadow: none;
+}
+
+.input::selection {
+  background: var(--second-color);
+  color: var(--fifth-color);
+}
+
+.input-book {
+  color: var(--first-color);
+  border-bottom: 3px solid var(--fourth-color);
+}
+
+.input-rate {
+  width: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+.rate-selected {
+  color: var(--fourth-color);
+}
+
+.rate-options {
+  list-style: none;
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+  left: -10px;
+  display: none;
+  position: absolute;
+  width: calc(100% + 10px);
+  background: white;
+  border: 1px solid #ddd;
+  z-index: 5;
+}
+
+.rate-options li {
+  padding: 10px 25px;
+  background: white;
+  color: black;
+}
+
+.rate-options li:hover {
+  background: var(--second-color);
+  color: white;
+}
