@@ -17,6 +17,10 @@
   text-align: center;
 }
 
+.add-book-container .input {
+  color: black;
+}
+
 .add-book-container .input-rate {
   width: 30%;
 }
@@ -28,8 +32,11 @@
   pointer-events: none;
 }
 
-.rate-hidden-input:invalid + .rate-dropdown .rate-selected {
-  border-bottom: 3px solid red;
+.error p{
+  color: var(--second-color);
+  text-align: center;
+  font-weight: 900;
+  padding-top: 20px;
 }
 
 @media (max-width: 830px) {

@@ -14,13 +14,19 @@
       />
     </div>
 
+    <% if (locals.error) { %>
+      <div class="error">
+        <p><%= locals.error%></p>
+      </div>
+    <% }  %>
+
     <div>
       <form action="/add-book" method="POST" >
         <label for="title">Title *</label>
-        <input class="input" type="text" name="title" id="title" required />
+        <input class="input" type="text" name="title" id="title" required value="<%=locals.new_book ? locals.new_book.title : '' %>"/>
 
         <label for="isbn">Isbn *</label>
-        <input class="input" type="text" name="id" id="id" required />
+        <input class="input" type="text" name="id" id="id" required value="<%=locals.new_book ? locals.new_book.id : '' %>"/>
 
         <label for="author">Author</label>
         <input class="input" type="text" name="author" id="author" />
@@ -30,7 +36,7 @@
 
         <label for="rate">Rate *</label>
         <div class="input input-rate">
-          <div class="rate-selected">Select rating</div>
+          <div class="rate-selected" ><%=locals.new_book ? locals.new_book.rate : "Select rating" %></div>
           <ul class="rate-options">
             <li data-value="1">1</li>
             <li data-value="2">2</li>
@@ -39,7 +45,7 @@
             <li data-value="5">5</li>
           </ul>
         </div>
-        <input type="text" name="rate" id="rate" required class="rate-hidden-input" />
+        <input type="text" name="rate" id="rate" required class="rate-hidden-input" value="<%=locals.new_book ? locals.new_book.rate : '' %>"/>
 
 
         <label for="genre">Genre</label>

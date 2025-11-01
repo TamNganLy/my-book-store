@@ -68,8 +68,12 @@ app.post("/add-book", async(req, res) => {
     await axios.post(`${API_URL}/books`, req.body);
     res.redirect("/");
   } catch (error) {
-    res.redirect("/add-book");
-    res.status(500).json({ message: "Error creating book" });
+    console.error(error.response?.data);
+    res.render("index.ejs", {
+      nav: "add-book",
+      error: error.response?.data,
+      new_book: req.body
+    });
   }
 })
 

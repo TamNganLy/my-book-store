@@ -119,6 +119,11 @@ app.post("/books", async(req,res) => {
     res.json(result.rows);
   } catch (err) {
     console.error(err);
+
+    if (err.code === '23505') { // duplicate key
+      return res.status(400).send(`The book with the ISBN ${id} has already been added.`);
+    }
+    
     res.status(500).send("Server error");
   }
 });
