@@ -13,7 +13,7 @@ This project is part of my journey to practice building a **full-stack web appli
 ### 🏗️ Tech Stack  
 - **Frontend:** EJS, CSS  
 - **Backend:** Node.js, Express.js  
-- **Database:** PostgreSQL (local), will later deploy on **Render**  
+- **Database:** Render PostgreSQL  
 - **Version Control:** Git & GitHub  
 
 ---
@@ -22,20 +22,19 @@ This project is part of my journey to practice building a **full-stack web appli
 - View a list of all books  
 - Add new books (title, author, note, rating)  
 - Edit or delete existing books  
-- Fetch book covers from [Open Library Cover API](https://openlibrary.org/dev/docs/api/covers) or upload custom cover images  
-- Filter books by genre or rating  
+- Fetch book covers from [Open Library Cover API](https://openlibrary.org/dev/docs/api/covers) 
+- Filter books by genre  
 - Search books by title
 - Store and fetch data from PostgreSQL  
 
 ---
 
-### 🌐 Deployment (Planned)
-Once complete, the project will be hosted on **Render** with a live PostgreSQL database.
+### 🌐 Deployment (on Render)
+- Live demo link: https://my-book-store-h44q.onrender.com/
 
 ---
 
 ### 🧩 Future Improvements  
-- Add user login system  
 - Improve UI with more modern design  
 
 ---

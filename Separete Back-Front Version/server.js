@@ -1,9 +1,20 @@
 import express from "express";
 import bodyParser from "body-parser";
-import db from "../DBConfig.js";
+import pg from "pg";
+// import db from "./DBConfig.js";
 
 const app = express();
 const port = 4000;
+
+const db = new pg.Client({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'mybookStore',
+  password: '1234',
+  port: 5432
+})
+
+db.connect();
 
 // Middleware
 app.use(bodyParser.json());
@@ -20,7 +31,6 @@ app.get("/books", async(req,res) => {
     res.status(500).send("Server error");
   }
 })
-
 
 // GET book by isbn
 app.get("/books/isbn/:isbn", async(req,res) => {
