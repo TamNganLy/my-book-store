@@ -11,7 +11,9 @@ CREATE TABLE books
   title character varying(100) NOT NULL,
   description text,
   rate integer NOT NULL,
-  genre character varying(25)
+  genre character varying(25),
+  author character varying(30),
+  date_add timestamp DEFAULT CURRENT_TIMESTAMP
 )
 
 INSERT INTO review (book_id, text) 
@@ -58,3 +60,9 @@ VALUES (
   '3',
   'Fantasy'
 )
+
+postgresql://mybookstore_mmmd_user:prBX5bu2bOkeUGvL7S5sCRN26TNz68S4@dpg-d43ea4adbo4c73afur50-a/mybookstore_mmmd
+
+postgresql://mybookstore_mmmd_user:prBX5bu2bOkeUGvL7S5sCRN26TNz68S4@dpg-d43ea4adbo4c73afur50-a.oregon-postgres.render.com/mybookstore_mmmd
+
+render psql dpg-d43ea4adbo4c73afur50-a

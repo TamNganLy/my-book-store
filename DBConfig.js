@@ -8,7 +8,7 @@ const { Pool } = pg;
 
 const db = new Pool({
   connectionString: process.env.DBConnLink,
-  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false
+  ssl: { rejectUnauthorized: false }
 });
 
 export default db;
