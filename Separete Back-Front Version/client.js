@@ -1,27 +1,11 @@
-// index.js
-
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
-import routes from "./routes.js";
-// import db from "./DBConfig.js";
 
 const app = express();
 const port = 3000;
-const API_URL =
-  process.env.RENDER_EXTERNAL_URL
-    ? `${process.env.RENDER_EXTERNAL_URL}/API`
-    : `http://localhost:${port}/API`;
+const API_URL = "http://localhost:4000";
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(express.static("public"));
-
-app.use("/", routes);
-
-// ----------------------------
-//  FRONTEND ROUTES (EJS pages)
-// ----------------------------
 const footer = [
   [{
     title: "Home",
@@ -40,6 +24,10 @@ const footer = [
     id: "reviews",
   }  ]   
 ];
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static("public"));
 
 let genres = await fetchGenre();
 
@@ -245,9 +233,6 @@ app.post("/isbn/:isbn/delete-review", async(req, res) => {
   }
 })
 
-
-
-// Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

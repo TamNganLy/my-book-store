@@ -1,6 +1,6 @@
 CREATE TABLE reviews
 (
-  id integer PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   book_id VARCHAR(13) REFERENCES books (id),
   text text
 )

@@ -1,17 +1,15 @@
+// routes.js
 import express from "express";
-import bodyParser from "body-parser";
 import db from "./DBConfig.js";
 
-const app = express();
-const port = 4000;
+const router = express.Router();
 
-// Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
+// -------------------
+// BACKEND API ROUTES
+// -------------------
 
 // GET All books
-app.get("/books", async(req,res) => {
+router.get("/API/books", async(req,res) => {
   try {
     const result = await db.query("SELECT * FROM books ORDER BY date_add;");
     res.json(result.rows);
@@ -23,7 +21,7 @@ app.get("/books", async(req,res) => {
 
 
 // GET book by isbn
-app.get("/books/isbn/:isbn", async(req,res) => {
+router.get("/API/books/isbn/:isbn", async(req,res) => {
   try {
     const isbn = req.params.isbn;
     const result = await db.query("SELECT * FROM books WHERE id = $1;", [isbn]);
@@ -40,7 +38,7 @@ app.get("/books/isbn/:isbn", async(req,res) => {
 })
 
 // GET book by genre
-app.get("/books/genre", async(req,res) => {
+router.get("/API/books/genre", async(req,res) => {
   try {
     const genre = req.query.genre;
     const result = await db.query("SELECT * FROM books WHERE genre = $1 ORDER BY date_add;", [genre]);
@@ -57,7 +55,7 @@ app.get("/books/genre", async(req,res) => {
 })
 
 // GET book by name
-app.get("/books/search", async(req,res) => {
+router.get("/API/books/search", async(req,res) => {
   try {
     const title = req.query.title.toLowerCase();
     const result = await db.query("SELECT * FROM books WHERE LOWER(title) LIKE '%' || $1 || '%' ORDER BY date_add;", [title]);
@@ -74,7 +72,7 @@ app.get("/books/search", async(req,res) => {
 })
 
 // GET review by book id
-app.get("/reviews/:isbn", async(req,res) => {
+router.get("/API/reviews/:isbn", async(req,res) => {
   try {
     const isbn = req.params.isbn;
     const result = await db.query("SELECT * FROM reviews WHERE book_id = $1 ORDER BY id;", [isbn]);
@@ -91,7 +89,7 @@ app.get("/reviews/:isbn", async(req,res) => {
 })
 
 // POST a book
-app.post("/books", async(req,res) => {
+router.post("/API/books", async(req,res) => {
   const id = req.body.id;
   const title = req.body.title;
   const description = req.body.description;
@@ -118,7 +116,7 @@ app.post("/books", async(req,res) => {
 });
 
 // POST a review
-app.post("/reviews", async(req,res) => {
+router.post("/API/reviews", async(req,res) => {
   const book_id = req.body.isbn;
   const review = req.body.review;
 
@@ -136,7 +134,7 @@ app.post("/reviews", async(req,res) => {
 })
 
 // UPDATE a book (one parameter)
-app.patch("/books/:isbn", async(req,res) => {
+router.patch("/API/books/:isbn", async(req,res) => {
   const isbn = req.params.isbn;
   const title = req.body.updatedTitle || null;
   const author = req.body.updatedAuthor || null;
@@ -171,7 +169,7 @@ app.patch("/books/:isbn", async(req,res) => {
 })
 
 // UPDATE a review (one parameter)
-app.patch("/reviews/:id", async(req,res) => {
+router.patch("/API/reviews/:id", async(req,res) => {
   const id = parseInt(req.params.id);
   const text = req.body.updatedReview;
 
@@ -193,7 +191,7 @@ app.patch("/reviews/:id", async(req,res) => {
 })
 
 // DELETE a book
-app.delete("/books/:isbn", async(req,res) => {
+router.delete("/API/books/:isbn", async(req,res) => {
   const deletedId = req.params.isbn;
 
   try {
@@ -206,7 +204,7 @@ app.delete("/books/:isbn", async(req,res) => {
 })
 
 // DELETE a review
-app.delete("/reviews/:id", async(req,res) => {
+router.delete("/API/reviews/:id", async(req,res) => {
   const deletedId = parseInt(req.params.id);
 
   try {
@@ -218,7 +216,7 @@ app.delete("/reviews/:id", async(req,res) => {
 })
 
 // Get all genres
-app.get("/genres", async(req,res) => {
+router.get("/API/genres", async(req,res) => {
   try {
     const result = await db.query("SELECT DISTINCT genre FROM books ORDER BY genre;");
     res.json(result.rows);
@@ -228,6 +226,5 @@ app.get("/genres", async(req,res) => {
   }
 })
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-})
+
+export default router;
