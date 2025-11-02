@@ -34,17 +34,6 @@ let genres = await fetchGenre();
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get(`${API_URL}/books`);
-
-    // let footer = [
-    //   {
-    //     title: "Home",
-    //     id: "hero"
-    //   },
-    //   {
-    //     title: "Books",
-    //     id: "books_grid",
-    //   }   
-    // ];
     
     res.render("index.ejs", {
       nav: "main",
@@ -53,6 +42,19 @@ app.get("/", async (req, res) => {
       footer: footer[0]
     });
   } catch (err) {
+    if (err.response) {
+      console.log(err.response.status);
+      console.log(err.response.data);
+
+      return res.render("index.ejs", {
+        nav: "main",
+        genres,
+        error: err.response?.data,
+        footer: footer[0]
+      });
+    } else {
+      console.error(err);
+    }
     console.error(err);
     res.status(500).send("Server error");
   }
@@ -65,17 +67,6 @@ app.get("/genre/:genre", async (req, res) => {
     const response = await axios.get(`${API_URL}/books/genre`, {
       params: {genre: genre}
     });
-
-    // let footer = [
-    //   {
-    //     title: "Home",
-    //     id: "hero"
-    //   },
-    //   {
-    //     title: "Books",
-    //     id: "books_grid",
-    //   }   
-    // ];
     
     res.render("index.ejs", {
       nav: "main",
