@@ -14,32 +14,38 @@
 
     <!-- Book shelves -->
     <section class="container">
-      <ul class="row">
-        <% books.forEach(book => { %>
-        <li class="col-xl-3 col-lg-4 col-md-6 col-sm-6 book-grid">
-          <a href="/isbn/<%= book.id %>">
-            <div class="my-container" >
-              <div class="book">
-                <div class="front">
-                  <div class="cover">
+      <% if (locals.books) { %>
+        <ul class="row">
+          <% books.forEach(book => { %>
+          <li class="col-xl-3 col-lg-4 col-md-6 col-sm-6 book-grid">
+            <a href="/isbn/<%= book.id %>">
+              <div class="my-container" >
+                <div class="book">
+                  <div class="front">
+                    <div class="cover">
+                      <img
+                        src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-M.jpg"
+                        alt="<%= book.title %>"
+                      />
+                    </div>
+                  </div>
+                  <div class="left-side">
                     <img
                       src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-M.jpg"
                       alt="<%= book.title %>"
                     />
                   </div>
                 </div>
-                <div class="left-side">
-                  <img
-                    src="https://covers.openlibrary.org/b/isbn/<%= book.id %>-M.jpg"
-                    alt="<%= book.title %>"
-                  />
-                </div>
+                <p class="book-title"><%= book.title %></p>
               </div>
-              <p class="book-title"><%= book.title %></p>
-            </div>
-          </a>
-          <p class="book-rate">Rate: <%= book.rate %>/5</p>
-        </li>
-        <% }) %>
-      </ul>
+            </a>
+            <p class="book-rate">Rate: <%= book.rate %>/5</p>
+          </li>
+          <% }) %>
+        </ul>
+      <% } else if (locals.error) { %>
+        <div class="error">
+          <p><%= locals.error%></p>
+        </div>
+      <% } %>
     </section>

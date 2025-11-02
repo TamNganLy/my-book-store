@@ -57,6 +57,7 @@
   font-weight: 600;
   color: var(--six-color) !important;
   position: relative;
+  text-transform: capitalize;
 }
 
 .custom-navbar.scrolled .nav-text {

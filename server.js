@@ -34,7 +34,7 @@ app.get("/books", async(req,res) => {
 
 
 // GET book by isbn
-app.get("/books/:isbn", async(req,res) => {
+app.get("/books/isbn/:isbn", async(req,res) => {
   try {
     const isbn = req.params.isbn;
     const result = await db.query("SELECT * FROM books WHERE id = $1;", [isbn]);
@@ -54,7 +54,7 @@ app.get("/books/:isbn", async(req,res) => {
 app.get("/books/genre", async(req,res) => {
   try {
     const genre = req.query.genre;
-    const result = await db.query("SELECT * FROM books WHERE genre = $1;", [genre]);
+    const result = await db.query("SELECT * FROM books WHERE genre = $1 ORDER BY date_add;", [genre]);
 
     if (result.rows.length === 0) {
       return res.status(404).send("Book not found.");
@@ -70,8 +70,8 @@ app.get("/books/genre", async(req,res) => {
 // GET book by name
 app.get("/books/search", async(req,res) => {
   try {
-    const title = req.query.search.toLowerCase();
-    const result = await db.query("SELECT * FROM books WHERE LOWER(title) LIKE '%' || $1 || '%';", [title]);
+    const title = req.query.title.toLowerCase();
+    const result = await db.query("SELECT * FROM books WHERE LOWER(title) LIKE '%' || $1 || '%' ORDER BY date_add;", [title]);
 
     if (result.rows.length === 0) {
       return res.status(404).send("Book not found.");
@@ -107,7 +107,7 @@ app.post("/books", async(req,res) => {
   const title = req.body.title;
   const description = req.body.description;
   const rate = req.body.rate;
-  const genre = req.body.genre;
+  const genre = req.body.genre.toLowerCase();
   const author = req.body.author;
 
   try {
@@ -154,7 +154,7 @@ app.patch("/books/:isbn", async(req,res) => {
   const description = req.body.updatedDescription || null;
   const rate = req.body.updatedRate !== undefined && req.body.updatedRate !== "" ? 
     parseInt(req.body.updatedRate) : null;
-  const genre = req.body.updatedGenre || null;
+  const genre = req.body.updatedGenre.toLowerCase() || null;
 
   try {
     const result = await db.query(
@@ -224,6 +224,17 @@ app.delete("/reviews/:id", async(req,res) => {
     await db.query("DELETE FROM reviews WHERE id = $1 RETURNING *", [deletedId]);
     res.status(200).send("Review deleted.");
   } catch (err) {
+    res.status(500).send("Server error");
+  }
+})
+
+// Get all genres
+app.get("/genres", async(req,res) => {
+  try {
+    const result = await db.query("SELECT DISTINCT genre FROM books ORDER BY genre;");
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
     res.status(500).send("Server error");
   }
 })

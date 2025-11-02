@@ -6,7 +6,7 @@
           <div class="book-category">
             <p><a href="/">HOME</a></p>
             -
-            <p><a href="/"><%= book.genre %></a></p>
+            <p><a href="/genre/<%=book.genre%>"><%= book.genre %></a></p>
             -
             <p><%= book.title %></p>
           </div>
@@ -53,7 +53,7 @@
               hidden="true" />
             
             <input 
-              class="input input-book"
+              class="input input-book input-genre"
               id="updatedGenre<%=book.id%>" 
               type="text" 
               name="updatedGenre" 

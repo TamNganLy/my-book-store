@@ -38,9 +38,11 @@
             ><p class="nav-text">Genre</p></a
           >
           <ul class="dropdown-menu scrollable-dropdown my-dropdown-menu">
-            <li><a class="dropdown-item" href="#"><p>Fiction</p></a></li>
-            <li><a class="dropdown-item" href="#"><p>Fantasy</p></a></li>
-            <li><a class="dropdown-item" href="#"><p>Romantic</p></a></li>
+            <% if (locals.genres) { %>
+              <% locals.genres.forEach(g => { %>
+                <li><a class="dropdown-item" href="/genre/<%=g.genre%>"><p><%=g.genre%></p></a></li>
+              <% }) %>
+            <% } %>
           </ul>
         </li>
         <li class="nav-item">
@@ -48,10 +50,11 @@
         </li>
         <li class="nav-item"><a class="nav-link" href="/"><p class="nav-text">Contact</p></a></li>
       </ul>
-      <form role="search" action="/">
+      <form role="search" action="/search/" method="GET">
         <input
           class="form-control"
           type="search"
+          name="search"
           placeholder="Search"
           aria-label="Search"
         />

@@ -29,13 +29,13 @@
         <input class="input" type="text" name="id" id="id" required value="<%=locals.new_book ? locals.new_book.id : '' %>"/>
 
         <label for="author">Author</label>
-        <input class="input" type="text" name="author" id="author" />
+        <input class="input" type="text" name="author" id="author" value="<%=locals.new_book ? locals.new_book.author : '' %>"/>
 
         <label for="genre">Genre</label>
-        <input class="input" type="text" name="genre" id="genre" />
+        <input class="input" type="text" name="genre" id="genre" value="<%=locals.new_book ? locals.new_book.genre : '' %>"/>
         
         <label for="description">Description</label>
-        <textarea class="input" type="text" name="description" id="description" rows="5" ></textarea>
+        <textarea class="input" type="text" name="description" id="description" rows="5" ><%=locals.new_book ? locals.new_book.description : '' %></textarea>
 
         <label for="rate">Rate *</label>
         <div class="input input-rate">
