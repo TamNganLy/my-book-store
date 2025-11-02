@@ -79,6 +79,7 @@ function handler_book(id) {
 
   document.getElementById("updatedTitle" + id).removeAttribute("hidden")
   document.getElementById("updatedAuthor" + id).removeAttribute("hidden")
+  document.getElementById("updatedGenre" + id).removeAttribute("hidden")
   document.getElementById("updatedDescription" + id).removeAttribute("hidden")
   document.getElementById("updatedRate" + id).removeAttribute("hidden")
   document.getElementById("btn" + id).removeAttribute("hidden")
@@ -94,6 +95,7 @@ function handler_cancel_book(id) {
 
   document.getElementById("updatedTitle" + id).setAttribute("hidden", true)
   document.getElementById("updatedAuthor" + id).setAttribute("hidden", true)
+  document.getElementById("updatedGenre" + id).setAttribute("hidden", true)
   document.getElementById("updatedDescription" + id).setAttribute("hidden", true)
   document.getElementById("updatedRate" + id).setAttribute("hidden", true)
   document.getElementById("btn" + id).setAttribute("hidden", true)

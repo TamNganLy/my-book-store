@@ -13,10 +13,22 @@ app.use(express.static("public"));
 app.get("/", async (req, res) => {
   try {
     const response = await axios.get(`${API_URL}/books`);
+
+    let footer = [
+      {
+        title: "Home",
+        id: "hero"
+      },
+      {
+        title: "Books",
+        id: "books_grid",
+      }   
+    ];
     
     res.render("index.ejs", {
       nav: "main",
       books: response.data,
+      footer
     });
   } catch (err) {
     console.error(err);
@@ -39,6 +51,16 @@ app.get("/isbn/:isbn", async (req, res) => {
 
     let reviews = [];
     let reviewMessage = null;
+    let footer = [
+      {
+        title: "Book Detail",
+        id: "book-detail"
+      },
+      {
+        title: "Reviews",
+        id: "reviews",
+      }   
+    ];
     
     try {
       const review_response = await axios.get(`${API_URL}/reviews/${isbn}`);
@@ -55,7 +77,8 @@ app.get("/isbn/:isbn", async (req, res) => {
       nav: "book",
       book,
       reviews,
-      reviewMessage
+      reviewMessage,
+      footer
     });
   } catch (err) {
     console.error(err);

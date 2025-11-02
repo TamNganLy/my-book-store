@@ -1,5 +1,5 @@
 <section class="detail-container">
-  <div class="book-container">
+  <div class="book-container" id="book-detail">
     <ul class="row">
         <li class="col-lg-2 col-3"></li>
         <li class="col-lg-8 col-7">
@@ -48,6 +48,16 @@
               type="text" 
               name="updatedAuthor" 
               value="<%= book.author %>" 
+              autocomplete="off"
+              autofocus="true" 
+              hidden="true" />
+            
+            <input 
+              class="input input-book"
+              id="updatedGenre<%=book.id%>" 
+              type="text" 
+              name="updatedGenre" 
+              value="<%= book.genre ? book.genre : 'Genre' %>" 
               autocomplete="off"
               autofocus="true" 
               hidden="true" />
@@ -102,7 +112,7 @@
       </ul>
   </div>
 
-  <div class="review-container">
+  <div class="review-container" id="reviews">
     <div class="review-item">
       <h2>Reviews</h2>
 
